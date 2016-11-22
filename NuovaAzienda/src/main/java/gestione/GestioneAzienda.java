@@ -322,14 +322,34 @@ public class GestioneAzienda {
 		vDao.deleteVoce(v);
 	}
 
-	// 3- READ BY ID
+	// 3- READ BY ID RETURN VOCE
 	public Voce readVoceById(long idV) {
 		return vDao.readVoceConId(idV);
+	}
+	
+	// 3- READ BY ID RETURN BOOLEAN
+	public boolean readVoceByIdBool(long idV) {
+		Voce v = null;
+		v = vDao.readVoceConId(idV);
+		if(v!=null){			
+			return true;
+		}
+		return false;
 	}
 	
 	// 4- GET VOCI DELLA RUBRICA PASSATA COME PARAMETRO
 	public List<Voce> getAllVoci(Rubrica r) {
 		return vDao.readAllVoci(r);
+	}
+	
+	// 5- SET BEAN
+	public void setBeanVoce(Voce v) {
+		vDao.fillDatiVoce(v);
+	}
+	
+	// 6- UPDATE
+	public void updateVoce(Voce v){
+		vDao.updateVoce(v);
 	}
 
 }

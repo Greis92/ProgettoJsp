@@ -84,7 +84,7 @@
 										<td class="center"><%=b.getOreLavorate() %></td>
 										<td class="center"><%=b.getImporto() %></td>
 								<td>
-								<form action="doFormEditBustaPaga.jsp" method="post" >
+								<form action="EditBustaPaga.jsp" method="post" >
 										<input type="hidden" name="idBustaPaga" value=<%=b.getIdBustaPaga()%> />
 										<button type="submit" class="btn btn-info" >
 										<i class="glyphicon glyphicon-edit icon-white"></i>Edit

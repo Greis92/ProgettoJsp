@@ -1,4 +1,4 @@
-<%@page import="bean.Cliente"%>
+<%@page import="bean.Voce"%>
 <%@page import="gestione.GestioneAzienda"%>
 <%@page import="utility.MessaggioErrore"%>
 
@@ -7,28 +7,30 @@
 
 <%@ page isELIgnored="false"%>
 
-<jsp:useBean id="cl" class="bean.Cliente" scope="request" />
+<jsp:useBean id="v" class="bean.Voce" scope="request" />
 <jsp:useBean id="messaggio" class="utility.MessaggioErrore" scope="request" />
 
-<jsp:setProperty property="*" name="cl" />
+<jsp:setProperty property="*" name="v" />
 
 <%
   
 GestioneAzienda g = new GestioneAzienda();
 
-	if(g.readClientConId(cl.getId_utente())){ 
+	if(g.readVoceByIdBool(v.getId_voce())){
+	  	g.deleteVoce(v);
+	  	messaggio.setMessaggio("Contatto cancellato!");
 %>
 
-<jsp:forward page="EditCliente.jsp" />
+<jsp:forward page="ElencoContatti.jsp" />
 
 <%
 	  
   	}else{
-  		messaggio.setMessaggio("Cliente non valido o non presente!");
+  		messaggio.setMessaggio("Cancellazione Fallita!");
 	 
 	 %>
 
-<jsp:forward page="ElencoClienti.jsp" />
+<jsp:forward page="ElencoContatti.jsp" />
 
 <%
 	 }

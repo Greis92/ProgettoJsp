@@ -17,9 +17,7 @@
                          <li><a class="ajax-link" href="${pageContext.request.contextPath}/Dipendente/RegistrazioneNuovaVoce.jsp"><i class="glyphicon glyphicon-plus"></i><span> Nuovo Contatto</span></a>
                          </li>
                         <li><a class="ajax-link" href="${pageContext.request.contextPath}/Dipendente/ElencoContatti.jsp"><i class="glyphicon glyphicon-book"></i><span> Rubrica</span></a>
-                        </li>
-                        <li><a class="ajax-link" href="${pageContext.request.contextPath}/Dipendente/CercaContatto.jsp"><i class="glyphicon glyphicon-search"></i><span> Cerca Contatto</span></a>
-                        </li>
+                        </li>                       
                         <li><a class="ajax-link" href="${pageContext.request.contextPath}/Dipendente/ElencoBustePaga.jsp"><i class="glyphicon glyphicon-inbox"></i><span> Bustepaga</span></a>
                         </li>
                         <li><a class="ajax-link" href="${pageContext.request.contextPath}/Access/doLogout.jsp"><i class="glyphicon glyphicon-user"></i><span> Logout</span></a>

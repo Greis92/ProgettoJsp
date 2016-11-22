@@ -86,7 +86,7 @@
 										<td class="center"><%=d.getPosizione() %></td>
 										<td class="center"><%=d.getStipendio() %></td>
 								<td>
-								<form action="doFormEditDipendente.jsp" method="post" >
+								<form action="EditDipendente.jsp" method="post" >
 										<input type="hidden" name="id_utente" value=<%=d.getId_utente()%> />
 										<button type="submit" class="btn btn-info" >
 										<i class="glyphicon glyphicon-edit icon-white"></i>

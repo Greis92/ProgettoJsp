@@ -66,8 +66,8 @@
 										<th class="center">Nome</th>
 										<th class="center">Cognome</th>
 										<th class="center">Telefono</th>
-										<th class="center">Modifica Contatto</th>
-										<th class="center">Cancella Contatto</th>
+										<th class="center">Action Edit</th>
+										<th class="center">Action Delete</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -75,31 +75,34 @@
 										GestioneAzienda g = new GestioneAzienda();
 										List<Voce> voci = g.getAllVoci(dipendente.getRubrica());
 										session.setAttribute("voci", voci);	
+										for(Voce vv: voci){
 									%>
-								<c:forEach items="${voci}" var="v">
+								
 										<tr>
-											<td class="center"><c:out value="${v.nome}" /></td>
-											<td class="center"><c:out value="${v.cognome}" /></td>
-											<td class="center"><c:out value="${v.telefono}" /></td>
+											<td class="center"><%=vv.getNome()%></td>
+											<td class="center"><%=vv.getCognome()%></td>
+											<td class="center"><%=vv.getTelefono()%></td>
 											<td>
-												<form action="doFormEditVoce.jsp" method="post">
-													<input type="hidden" name="id_voce" value="${v.id_voce}" />
+												<form action="EditVoce.jsp" method="post">
+													<input type="hidden" name="id_voce" value="<%=vv.getId_voce()%>"/> 
 													<button type="submit" class="btn btn-info">
-														<i class="glyphicon glyphicon-edit icon-white"></i>Modifica
+														<i class="glyphicon glyphicon-edit icon-white"></i>Edit
 													</button>
 												</form>
 											</td>
 											<td>
 												<form action="doDeleteVoce.jsp" method="post">
-													<input type="hidden" name="id_voce" value="${v.id_voce}" />
+													<input type="hidden" name="id_voce" value="<%=vv.getId_voce()%>" />
 													<button type="submit" class="btn btn-danger">
-														<i class="glyphicon glyphicon-trash icon-white"></i>Cancella
+														<i class="glyphicon glyphicon-trash icon-white"></i>Delete
 													</button>
 												</form>
 											</td>
 										</tr>
 
-									</c:forEach>
+									<%
+										}
+									%>
 								</tbody>
 							</table>
 						</div>

@@ -60,7 +60,7 @@ public class VoceDao {
 				
 			// INIZIO ELABORAZIONE DATI
 				
-			session.get(Voce.class, id);
+			v = session.get(Voce.class, id);
 			tx.commit(); //INSERISCE NEL DATABASE
 				
 			
@@ -262,6 +262,16 @@ public class VoceDao {
 		}
 
 		return res;
+	}
+
+	public void fillDatiVoce(Voce v) {
+		Voce vTemp = this.readVoceConId(v.getId_voce());
+		
+		v.setNome(vTemp.getNome());
+		v.setCognome(vTemp.getCognome());
+		v.setTelefono(vTemp.getTelefono());
+		v.setRubrica(vTemp.getRubrica());
+		
 	}
 
 }

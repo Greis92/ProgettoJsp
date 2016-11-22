@@ -62,7 +62,7 @@ public class RubricaDao {
 			
 			// INIZIO ELABORAZIONE DATI
 			
-			session.get(Rubrica.class,id);
+			r = session.get(Rubrica.class,id);
 			tx.commit(); //INSERISCE NEL DATABASE
 			
 		

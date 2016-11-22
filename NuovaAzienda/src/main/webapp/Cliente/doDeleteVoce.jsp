@@ -1,4 +1,4 @@
-<%@page import="bean.BustaPaga"%>
+<%@page import="bean.Voce"%>
 <%@page import="gestione.GestioneAzienda"%>
 <%@page import="utility.MessaggioErrore"%>
 
@@ -7,29 +7,30 @@
 
 <%@ page isELIgnored="false"%>
 
-<jsp:useBean id="bp" class="bean.BustaPaga" scope="request" />
+<jsp:useBean id="v" class="bean.Voce" scope="request" />
 <jsp:useBean id="messaggio" class="utility.MessaggioErrore" scope="request" />
 
-<jsp:setProperty property="*" name="bp" />
+<jsp:setProperty property="*" name="v" />
 
 <%
   
 GestioneAzienda g = new GestioneAzienda();
 
-	if(g.readBustaPagaById(bp.getIdBustaPaga())){ 
-		
+	if(g.readVoceByIdBool(v.getId_voce())){
+	  	g.deleteVoce(v);
+	  	messaggio.setMessaggio("Contatto cancellato!");
 %>
 
-<jsp:forward page="EditBustaPaga.jsp" />
+<jsp:forward page="ElencoContatti.jsp" />
 
 <%
 	  
   	}else{
-  		messaggio.setMessaggio("Busta Paga Non Valida!");
+  		messaggio.setMessaggio("Cancellazione Fallita!");
 	 
 	 %>
 
-<jsp:forward page="ElencoBustePaga.jsp" />
+<jsp:forward page="ElencoContatti.jsp" />
 
 <%
 	 }

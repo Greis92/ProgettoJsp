@@ -86,7 +86,7 @@
 										<td class="center"><%=c.getRagioneSociale() %></td>
 										<td class="center"><%=c.getPartitaIva() %></td>
 								<td>
-								<form action="doFormEditCliente.jsp" method="post" >
+								<form action="EditCliente.jsp" method="post" >
 										<input type="hidden" name="id_utente" value=<%=c.getId_utente()%> />
 										<button type="submit" class="btn btn-info" >
 										<i class="glyphicon glyphicon-edit icon-white"></i>
