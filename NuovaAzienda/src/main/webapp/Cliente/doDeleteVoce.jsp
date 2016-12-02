@@ -1,5 +1,5 @@
 <%@page import="bean.Voce"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneRubrica"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,11 +13,10 @@
 <jsp:setProperty property="*" name="v" />
 
 <%
-  
-GestioneAzienda g = new GestioneAzienda();
+	GestioneRubrica gRubrica = new GestioneRubrica();
 
-	if(g.readVoceByIdBool(v.getId_voce())){
-	  	g.deleteVoce(v);
+	if(gRubrica.readVoceByIdBool(v.getId_voce())){
+		gRubrica.deleteVoce(v);
 	  	messaggio.setMessaggio("Contatto cancellato!");
 %>
 

@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 public class ClienteDao {
 	
 	//1- CREATE
-	public boolean insertClient(Cliente c){
+	public boolean insertCliente(Cliente c){
 		
 		boolean res = false;
 		
@@ -46,7 +46,7 @@ public class ClienteDao {
 	
 
 	//2A- READ: READ ONE
-	public Cliente readClientConId(Long id) {
+	public Cliente readClienteConId(Long id) {
 
 		Cliente c = null;
 		
@@ -79,7 +79,7 @@ public class ClienteDao {
 	
 
 	//2B- READ: READ WITH USERNAME
-	public Cliente readClientConUsername(String username) {
+	public Cliente readClienteConUsername(String username) {
 
 		Cliente c = null;
 		
@@ -117,7 +117,7 @@ public class ClienteDao {
 
 	//2C- READ: READ ALL 
 	@SuppressWarnings("unchecked")
-	public List<Cliente> readAllClient() {
+	public List<Cliente> readAllCliente() {
 			
 		List<Cliente> c = null;
 				
@@ -153,7 +153,7 @@ public class ClienteDao {
 		
 
 	//3- UPDATE
-	public boolean updateClient(Cliente c) {
+	public boolean updateCliente(Cliente c) {
 
 		boolean res = false;
 
@@ -186,7 +186,7 @@ public class ClienteDao {
 	
 
 	//4- DELETE 
-	public boolean deleteClient(Cliente c) {
+	public boolean deleteCliente(Cliente c) {
 
 		boolean res = false;
 
@@ -218,9 +218,9 @@ public class ClienteDao {
 	}
 
 
-	public void fillDatiClient(Cliente c) {
+	public void fillDatiCliente(Cliente c) {
 		
-		Cliente cTemp = this.readClientConId(c.getId_utente());
+		Cliente cTemp = this.readClienteConId(c.getId_utente());
 		
 		c.setNome(cTemp.getNome());
 		c.setCognome(cTemp.getCognome());

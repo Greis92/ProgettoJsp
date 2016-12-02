@@ -1,5 +1,5 @@
 <%@page import="bean.Dipendente"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneDipendente"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,11 +13,10 @@
 <jsp:setProperty property="*" name="dip" />
 
 <%
-  
-GestioneAzienda g = new GestioneAzienda();
+	GestioneDipendente gDipendente = new GestioneDipendente();
 
-	if(g.readDipendenteConId(dip.getId_utente())){
-	  	g.deleteDipendente(dip); 
+	if(gDipendente.readDipendenteConId(dip.getId_utente())){
+		gDipendente.deleteDipendente(dip); 
 	  	messaggio.setMessaggio("Cancellazione Avvenuta!");
 %>
 

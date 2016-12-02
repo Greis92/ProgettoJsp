@@ -1,4 +1,4 @@
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneDipendente"%>
 <%@page import="bean.Dipendente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -11,10 +11,10 @@
 	 <jsp:setProperty property="*" name="dip"/>
 	 
 	 <%
-	 if(admin.isValid()){
-	 	GestioneAzienda g = new GestioneAzienda(); 
-	 	g.setBeanDipendente(dip);
-	 %>
+	 	 	if(admin.isValid()){
+	 	 	 	GestioneDipendente gDipendente = new GestioneDipendente(); 
+	 	 	 	gDipendente.setBeanDipendente(dip);
+	 	 %>
 
 	<!--        header di pagina  -->
 	<jsp:include page="../headerHtml.jsp"></jsp:include>

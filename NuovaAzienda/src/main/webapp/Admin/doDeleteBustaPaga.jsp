@@ -1,5 +1,5 @@
 <%@page import="bean.BustaPaga"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneBustaPaga"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,11 +13,10 @@
 <jsp:setProperty property="*" name="bp" />
 
 <%
-  
-GestioneAzienda g = new GestioneAzienda();
+	GestioneBustaPaga gBusta = new GestioneBustaPaga();
 
-	if(g.readBustaPagaById(bp.getIdBustaPaga())){
-	  	g.deleteBustaPaga(bp);
+	if(gBusta.readBustaPagaById(bp.getIdBustaPaga())){
+		gBusta.deleteBustaPaga(bp);
 	  	messaggio.setMessaggio("Cancellazione Avvenuta!");
 %>
 

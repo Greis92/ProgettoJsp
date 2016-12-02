@@ -1,4 +1,4 @@
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneBustaPaga"%>
 <%@page import="bean.BustaPaga"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -11,10 +11,10 @@
 	 <jsp:setProperty property="*" name="bp"/>
 	 
 	 <%
-	 if(admin.isValid()){
-	 	GestioneAzienda g = new GestioneAzienda(); 
-	 	g.setBeanBustaPaga(bp); 
-	 %>
+	 	 	if(admin.isValid()){
+	 	 	 	GestioneBustaPaga gBusta = new GestioneBustaPaga(); 
+	 	 	 	gBusta.setBeanBustaPaga(bp);
+	 	 %>
 
 	<!--        header di pagina  -->
 	<jsp:include page="../headerHtml.jsp"></jsp:include>

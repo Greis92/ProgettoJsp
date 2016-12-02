@@ -1,6 +1,7 @@
+<%@page import="gestione.GestioneDipendente"%>
 <%@page import="bean.Dipendente"%>
 <%@page import="bean.BustaPaga"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneBustaPaga"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -15,25 +16,24 @@
     <jsp:setProperty property="*" name="bp"/>
      
 <%
+     	GestioneBustaPaga gBusta = new GestioneBustaPaga();
+		GestioneDipendente gDipendente = new GestioneDipendente();
 
-GestioneAzienda g = new GestioneAzienda();
+     // pars id_bustaPaga
+     String idTemp = String.valueOf(bp.getIdBustaPaga());
+     long idB = Long.parseLong(idTemp);
+     bp.setIdBustaPaga(idB);
 
-// pars id_bustaPaga
-String idTemp = String.valueOf(bp.getIdBustaPaga());
-long idB = Long.parseLong(idTemp);
-bp.setIdBustaPaga(idB);
-
-// pars id_dipendente
-long idD = Long.parseLong(request.getParameter("idDipendente"));
-Dipendente d = g.readDipendente(idD);
-bp.setDip(d);
+     // pars id_dipendente
+     long idD = Long.parseLong(request.getParameter("idDipendente"));
+     Dipendente d = gDipendente.readDipendente(idD);
+     bp.setDip(d);
 
 
-  if(g.readBustaPagaById(bp.getIdBustaPaga())){
-	  g.updateBustaPaga(bp);
-	  messaggio.setMessaggio("Bustapaga modificata!");
-
-%>
+       if(gBusta.readBustaPagaById(bp.getIdBustaPaga())){
+    	   gBusta.updateBustaPaga(bp);
+     	  messaggio.setMessaggio("Bustapaga modificata!");
+     %>
 
 <jsp:forward page="ElencoBustePaga.jsp" />
 

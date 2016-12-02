@@ -1,7 +1,7 @@
 <%@page import="javassist.runtime.Inner"%>
 <%@page import="bean.Dipendente"%>
 <%@page import="java.util.List"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneDipendente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -64,9 +64,9 @@
 									<select id="list" name="id_dipendente" data-rel="chosen">
 									<option value=""></option>
 									<%
-										GestioneAzienda g = new GestioneAzienda();
-										List<Dipendente> listaDip = g.readAllDipendenti();
-										session.setAttribute("listaDip", listaDip);									
+										GestioneDipendente gDipendente = new GestioneDipendente();
+										List<Dipendente> listaDip = gDipendente.readAllDipendenti();
+										session.setAttribute("listaDip", listaDip);
 									%>
 									<c:forEach items="${listaDip}" var="d"> 
 										<option value="${d.id_utente}" >

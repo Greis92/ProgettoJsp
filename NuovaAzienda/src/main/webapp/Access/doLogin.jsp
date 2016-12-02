@@ -1,6 +1,9 @@
+<%@page import="gestione.GestioneAdmin"%>
+<%@page import="gestione.GestioneDipendente"%>
+<%@page import="gestione.GestioneUtente"%>
 <%@page import="utility.MessaggioErrore"%>
 <%@page import="bean.Utente"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneCliente"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -15,21 +18,24 @@
 
 
 <%
-	
-	GestioneAzienda g = new GestioneAzienda();
+	GestioneUtente gUtente = new GestioneUtente();
+
+	GestioneAdmin gAdmin = new GestioneAdmin();
+	GestioneCliente gCliente = new GestioneCliente();
+	GestioneDipendente gDipendente = new GestioneDipendente();
     
-    if(g.existUserBoolean(utente.getUsername(), utente.getPassword())){
-    	 g.setBeanUtente(utente);
+    if(gUtente.existUserBoolean(utente.getUsername(), utente.getPassword())){
+    	gUtente.setBeanUtente(utente);
     	 
     }
    
 	if(utente.isValidLogin()){
-			
-			switch(utente.getRuolo()){
-			
-			case 'a':
-				admin.setId_utente(utente.getId_utente());
-				g.setBeanAdmin(admin);
+	
+	switch(utente.getRuolo()){
+	
+	case 'a':
+		admin.setId_utente(utente.getId_utente());
+		gAdmin.setBeanAdmin(admin);
 %>
 
 <jsp:forward page="../Admin/HomePageAdmin.jsp" />
@@ -39,7 +45,7 @@
 			break;
 			case 'c':
 				cliente.setId_utente(utente.getId_utente());
-				g.setBeanClient(cliente);
+				gCliente.setBeanCliente(cliente);
 								
 %>
 			
@@ -50,7 +56,7 @@
 			break;
 			case 'd':
 				dipendente.setId_utente(utente.getId_utente());
-				g.setBeanDipendente(dipendente);
+				gDipendente.setBeanDipendente(dipendente);
 				
 %>
 

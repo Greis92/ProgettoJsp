@@ -1,5 +1,5 @@
 <%@page import="bean.Cliente"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneCliente"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,11 +13,10 @@
 <jsp:setProperty property="*" name="cliente" />
 
 <%
-  
-GestioneAzienda g = new GestioneAzienda();
+	GestioneCliente gCliente = new GestioneCliente();
 
-	if(g.readClientConId(cliente.getId_utente())){
-	  	g.deleteClient(cliente); 
+	if(gCliente.readClienteConId(cliente.getId_utente())){
+		gCliente.deleteCliente(cliente); 
 	  	messaggio.setMessaggio("Cancellazione Avvenuta!");
 %>
 

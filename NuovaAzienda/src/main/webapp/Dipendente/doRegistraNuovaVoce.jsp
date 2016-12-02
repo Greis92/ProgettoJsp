@@ -1,6 +1,6 @@
 <%@page import="bean.Dipendente"%>
 <%@page import="bean.Voce"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneRubrica"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -14,17 +14,15 @@
     <jsp:setProperty property="*" name="voce"/>
      
 <%
-  
-GestioneAzienda g = new GestioneAzienda();
+     	GestioneRubrica gRubrica = new GestioneRubrica();
 
-String idTemp = String.valueOf(request.getParameter("id_utente"));
-long id = Long.parseLong(idTemp);
+     String idTemp = String.valueOf(request.getParameter("id_utente"));
+     long id = Long.parseLong(idTemp);
 
-  if(voce.isValid()){	 
-	  g.insertVoce(id, voce);
-	  messaggio.setMessaggio("Contatto inserito nella Rubrica!");
-
-%>
+       if(voce.isValid()){	 
+    	  gRubrica.insertVoce(id, voce);
+     	  messaggio.setMessaggio("Contatto inserito nella Rubrica!");
+     %>
 
 <jsp:forward page="ElencoContatti.jsp" />
 

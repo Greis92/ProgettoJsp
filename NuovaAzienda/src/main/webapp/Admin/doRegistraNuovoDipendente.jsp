@@ -1,5 +1,6 @@
+<%@page import="gestione.GestionePass"%>
+<%@page import="gestione.GestioneDipendente"%>
 <%@page import="bean.Dipendente"%>
-<%@page import="gestione.GestioneAzienda"%>
 <%@page import="utility.MessaggioErrore"%>
 
 
@@ -14,16 +15,15 @@
     <jsp:setProperty property="*" name="dip"/>
      
 <%
-  
-GestioneAzienda g = new GestioneAzienda();
+     	GestioneDipendente gDipendente = new GestioneDipendente();
+		GestionePass gPass = new GestionePass();
 
-dip.setPassword(g.convertiPass(dip.getPassword()));
+     dip.setPassword(gPass.convertiPass(dip.getPassword()));
 
-  if(dip.isValid() && !g.existDipendente(dip.getUsername())){
-	  g.registraDipendente(dip);
-	  messaggio.setMessaggio("Registrazione Avvenuta Con Successo!");
-
-%>
+       if(dip.isValid() && !gDipendente.existDipendente(dip.getUsername())){
+    	   gDipendente.registraDipendente(dip);
+     	  messaggio.setMessaggio("Registrazione Avvenuta Con Successo!");
+     %>
 
 <jsp:forward page="ElencoDipendenti.jsp" />
 

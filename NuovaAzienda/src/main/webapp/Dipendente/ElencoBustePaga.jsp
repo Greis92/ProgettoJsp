@@ -1,6 +1,6 @@
+<%@page import="gestione.GestioneBustaPaga"%>
 <%@page import="bean.BustaPaga"%>
 <%@page import="java.util.List"%>
-<%@page import="gestione.GestioneAzienda"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -14,9 +14,8 @@
 
 
 <%
-    	if(dipendente.isValid()){
-    		
-    %>
+	if(dipendente.isValid()){
+%>
 
 <div>
 
@@ -71,10 +70,10 @@
 								</thead>
 								<tbody>
 								<%
-										GestioneAzienda g = new GestioneAzienda();
-										List<BustaPaga> bustePaga = g.readBustaDip(dipendente);
-										session.setAttribute("bustePaga", bustePaga);									
-									%>
+									GestioneBustaPaga gBusta = new GestioneBustaPaga();
+									List<BustaPaga> bustePaga = gBusta.readBustaDip(dipendente);
+									session.setAttribute("bustePaga", bustePaga);
+								%>
 								<c:forEach items="${bustePaga}" var="bustaPaga">
 									<tr>    									
 										<td class="center"><c:out value="${bustaPaga.dataEmissione}"/></td>

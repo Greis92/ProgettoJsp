@@ -1,6 +1,6 @@
 <%@page import="bean.BustaPaga"%>
 <%@page import="java.util.List"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneBustaPaga"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -20,9 +20,8 @@
 </div>
 
 <%
-    	if(admin.isValid()){
-    		
-    %>
+	if(admin.isValid()){
+%>
 
 <div class="ch-container">
 	<div class="row">
@@ -73,12 +72,11 @@
 								<tbody>
 									<tr>
 										<%
-    							GestioneAzienda g = new GestioneAzienda();
-    							List <BustaPaga> lista = g.readAll();
-    							
-    							int i=0;
-    							for(BustaPaga b: lista){
-    							%>
+											GestioneBustaPaga gBusta = new GestioneBustaPaga();
+										    List <BustaPaga> lista = gBusta.readAll();										    							
+										    int i=0;
+										    for(BustaPaga b: lista){
+										%>
 										<td class="center"><%=b.getNomeCognome() %></td>
 										<td class="center"><%=b.getDataEmissione() %></td>
 										<td class="center"><%=b.getOreLavorate() %></td>

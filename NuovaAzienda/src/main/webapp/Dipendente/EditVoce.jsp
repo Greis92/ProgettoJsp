@@ -1,4 +1,4 @@
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneRubrica"%>
 <%@page import="bean.Voce"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -11,10 +11,10 @@
 	 <jsp:setProperty property="*" name="v"/>
 	 
 	 <%
-	 if(dipendente.isValid()){
-	 	GestioneAzienda g = new GestioneAzienda();  
-	 	g.setBeanVoce(v);
-	 %>
+	 	 	if(dipendente.isValid()){
+	 	 	 	GestioneRubrica gRubrica = new GestioneRubrica();  
+	 	 	 	gRubrica.setBeanVoce(v);
+	 	 %>
 
 	<!--        header di pagina  -->
 	<jsp:include page="../headerHtml.jsp"></jsp:include>

@@ -1,5 +1,6 @@
+<%@page import="gestione.GestionePass"%>
+<%@page import="gestione.GestioneDipendente"%>
 <%@page import="bean.Dipendente"%>
-<%@page import="gestione.GestioneAzienda"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,20 +14,19 @@
     <jsp:setProperty property="*" name="d"/>
      
 <%
+     	GestioneDipendente gDipendente = new GestioneDipendente();
+		GestionePass gPass = new GestionePass();
 
-GestioneAzienda g = new GestioneAzienda();
+     d.setPassword(gPass.convertiPass(d.getPassword()));
 
-d.setPassword(g.convertiPass(d.getPassword()));
+     String idTemp = String.valueOf(d.getId_utente());
+     long id = Long.parseLong(idTemp);
+     d.setId_utente(id);
 
-String idTemp = String.valueOf(d.getId_utente());
-long id = Long.parseLong(idTemp);
-d.setId_utente(id);
-
-  if(g.readDipendenteConId(d.getId_utente())){
-	  g.updateDipendente(d);
-	  messaggio.setMessaggio("Modifica Effettuata!");
-
-%>
+       if(gDipendente.readDipendenteConId(d.getId_utente())){
+    	   gDipendente.updateDipendente(d);
+     	  messaggio.setMessaggio("Modifica Effettuata!");
+     %>
 
 <jsp:forward page="ElencoDipendenti.jsp" />
 

@@ -1,5 +1,6 @@
+<%@page import="gestione.GestionePass"%>
+<%@page import="gestione.GestioneCliente"%>
 <%@page import="bean.Cliente"%>
-<%@page import="gestione.GestioneAzienda"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,20 +14,19 @@
     <jsp:setProperty property="*" name="cliente"/>
      
 <%
+     	GestioneCliente gCliente = new GestioneCliente();
+		GestionePass gPass = new GestionePass();
 
-GestioneAzienda g = new GestioneAzienda();
+     cliente.setPassword(gPass.convertiPass(cliente.getPassword()));
 
-cliente.setPassword(g.convertiPass(cliente.getPassword()));
+     String idTemp = String.valueOf(cliente.getId_utente());
+     long id = Long.parseLong(idTemp);
+     cliente.setId_utente(id);
 
-String idTemp = String.valueOf(cliente.getId_utente());
-long id = Long.parseLong(idTemp);
-cliente.setId_utente(id);
-
-  if(g.readClientConId(cliente.getId_utente())){
-	  g.updateClient(cliente);
-	  messaggio.setMessaggio("Modifica Effettuata!");
-
-%>
+       if(gCliente.readClienteConId(cliente.getId_utente())){
+    	   gCliente.updateCliente(cliente);
+     	  messaggio.setMessaggio("Modifica Effettuata!");
+     %>
 
 <jsp:forward page="ElencoClienti.jsp" />
 

@@ -1,7 +1,7 @@
+<%@page import="gestione.GestioneBustaPaga"%>
 <%@page import="bean.Dipendente"%>
 <%@page import="dao.DipendenteDao"%>
 <%@page import="bean.BustaPaga"%>
-<%@page import="gestione.GestioneAzienda"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -15,21 +15,19 @@
     <jsp:setProperty property="*" name="bp"/>
      
 <%
-  
-GestioneAzienda g = new GestioneAzienda();
+     	GestioneBustaPaga gBustaPaga = new GestioneBustaPaga();		
 
-DipendenteDao dDao = new DipendenteDao();
-long id = Long.parseLong(request.getParameter("id_dipendente"));
-Dipendente d = dDao.readDipendenteConId(id);
-bp.setDip(d);
+     DipendenteDao dDao = new DipendenteDao();
+     long id = Long.parseLong(request.getParameter("id_dipendente"));
+     Dipendente d = dDao.readDipendenteConId(id);
+     bp.setDip(d);
 
-if(bp.isValid()){
-	
-	if(g.readAllBustaPaga(bp.getDataEmissione(), bp.getDip())== null){
-				
-			g.registraBustaPaga(bp);
-			messaggio.setMessaggio("Bustapaga Emessa!");
-%>
+     if(bp.isValid()){
+     	
+     	if(gBustaPaga.readAllBustaPaga(bp.getDataEmissione(), bp.getDip())== null){     		
+     		gBustaPaga.registraBustaPaga(bp);
+     	messaggio.setMessaggio("Bustapaga Emessa!");
+     %>
 
 <jsp:forward page="ElencoBustePaga.jsp" />
 

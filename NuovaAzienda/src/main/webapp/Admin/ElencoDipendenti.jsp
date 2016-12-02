@@ -1,6 +1,6 @@
+<%@page import="gestione.GestioneDipendente"%>
 <%@page import="bean.Dipendente"%>
 <%@page import="java.util.List"%>
-<%@page import="gestione.GestioneAzienda"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -20,9 +20,8 @@
 </div>
 
 <%
-    	if(admin.isValid()){
-    		
-    %>
+	if(admin.isValid()){
+%>
 
 <div class="ch-container">
 	<div class="row">
@@ -74,12 +73,11 @@
 								<tbody>
 									<tr>
 										<%
-    							GestioneAzienda g = new GestioneAzienda();
-    							List <Dipendente> lista = g.readAllDipendenti();
-    							
-    							int i=0;
-    							for(Dipendente d: lista){
-    							%>
+											GestioneDipendente gDipendente = new GestioneDipendente();
+										    List <Dipendente> lista = gDipendente.readAllDipendenti();										    							
+										    int i=0;
+										    for(Dipendente d: lista){
+										%>
 										<td class="center"><%=d.getNome() %></td>
 										<td class="center"><%=d.getCognome() %></td>
 										<td class="center"><%=d.getUsername() %></td>

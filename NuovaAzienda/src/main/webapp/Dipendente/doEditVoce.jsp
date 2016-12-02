@@ -1,6 +1,6 @@
 <%@page import="bean.Rubrica"%>
 <%@page import="bean.Voce"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneRubrica"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -14,24 +14,22 @@
     <jsp:setProperty property="*" name="v"/>
      
 <%
+     	GestioneRubrica gRubrica = new GestioneRubrica();
 
-GestioneAzienda g = new GestioneAzienda();
+     String rTemp = String.valueOf(request.getParameter("idRubrica"));
+     long idR = Long.parseLong(rTemp);
+     Rubrica r = gRubrica.readRubricaById(idR);
 
-String rTemp = String.valueOf(request.getParameter("idRubrica"));
-long idR = Long.parseLong(rTemp);
-Rubrica r = g.readRubricaById(idR);
+     String idTemp = String.valueOf(v.getId_voce());
+     long id = Long.parseLong(idTemp);
 
-String idTemp = String.valueOf(v.getId_voce());
-long id = Long.parseLong(idTemp);
+     v.setRubrica(r);
+     v.setId_voce(id);
 
-v.setRubrica(r);
-v.setId_voce(id);
-
-  if(g.readVoceByIdBool(id)){
-	  g.updateVoce(v);
-	  messaggio.setMessaggio("Contatto modificato!");
-
-%>
+       if(gRubrica.readVoceByIdBool(id)){
+    	  gRubrica.updateVoce(v);
+     	  messaggio.setMessaggio("Contatto modificato!");
+     %>
 
 <jsp:forward page="ElencoContatti.jsp" />
 

@@ -1,4 +1,4 @@
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneCliente"%>
 <%@page import="bean.Cliente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -11,10 +11,10 @@
 	 <jsp:setProperty property="*" name="cl"/>
 	 
 	 <%
-	 if(admin.isValid()){
-	 	GestioneAzienda g = new GestioneAzienda(); 
-	 	g.setBeanClient(cl);
-	 %>
+	 	 	if(admin.isValid()){
+	 	 	 	GestioneCliente gCliente = new GestioneCliente(); 
+	 	 	 	gCliente.setBeanCliente(cl);
+	 	 %>
 
 	<!--        header di pagina  -->
 	<jsp:include page="../headerHtml.jsp"></jsp:include>

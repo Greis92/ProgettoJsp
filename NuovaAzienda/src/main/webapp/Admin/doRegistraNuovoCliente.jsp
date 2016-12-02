@@ -1,5 +1,6 @@
+<%@page import="gestione.GestionePass"%>
+<%@page import="gestione.GestioneCliente"%>
 <%@page import="bean.Cliente"%>
-<%@page import="gestione.GestioneAzienda"%>
 <%@page import="utility.MessaggioErrore"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,16 +14,15 @@
     <jsp:setProperty property="*" name="cl"/>
      
 <%
-  
-GestioneAzienda g = new GestioneAzienda();
+     	GestioneCliente gCliente = new GestioneCliente();
+		GestionePass gPass = new GestionePass();
 
-cl.setPassword(g.convertiPass(cl.getPassword()));
+     cl.setPassword(gPass.convertiPass(cl.getPassword()));
 
-  if(cl.isValid() && !g.existClient(cl.getUsername())){
-	  g.registraClient(cl);
-	  messaggio.setMessaggio("Registrazione Avvenuta Con Successo!");
-
-%>
+       if(cl.isValid() && !gCliente.existCliente(cl.getUsername())){
+    	   gCliente.registraCliente(cl);
+     	  messaggio.setMessaggio("Registrazione Avvenuta Con Successo!");
+     %>
 
 <jsp:forward page="ElencoClienti.jsp" />
 

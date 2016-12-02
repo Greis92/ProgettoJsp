@@ -1,6 +1,6 @@
 <%@page import="bean.Voce"%>
 <%@page import="java.util.List"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneRubrica"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -14,9 +14,8 @@
 
 
 <%
-    	if(dipendente.isValid()){
-    		
-    %>
+	if(dipendente.isValid()){
+%>
 
 <div>
 
@@ -72,11 +71,11 @@
 								</thead>
 								<tbody>
 								<%
-										GestioneAzienda g = new GestioneAzienda();
-										List<Voce> voci = g.getAllVoci(dipendente.getRubrica());
-										session.setAttribute("voci", voci);	
-										for(Voce vv: voci){
-									%>
+									GestioneRubrica gRubrica = new GestioneRubrica();
+									List<Voce> voci = gRubrica.getAllVoci(dipendente.getRubrica());
+									session.setAttribute("voci", voci);	
+									for(Voce vv: voci){
+								%>
 								
 										<tr>
 											<td class="center"><%=vv.getNome()%></td>

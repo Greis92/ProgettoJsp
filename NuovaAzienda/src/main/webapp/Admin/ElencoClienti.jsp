@@ -1,6 +1,6 @@
 <%@page import="bean.Cliente"%>
 <%@page import="java.util.List"%>
-<%@page import="gestione.GestioneAzienda"%>
+<%@page import="gestione.GestioneCliente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -29,9 +29,8 @@
 			</div>
 			
 			<%
-    	if(admin.isValid()){
-    		
-    %>
+				if(admin.isValid()){
+						%>
 
 		</div>
 		<!-- left menu ends -->
@@ -74,12 +73,11 @@
 								<tbody>
 									<tr>
 										<%
-    							GestioneAzienda g = new GestioneAzienda();
-    							List <Cliente> lista = g.readAllClient();
-    							
-    							int i=0;
-    							for(Cliente c: lista){
-    							%>
+											GestioneCliente gCliente = new GestioneCliente();
+										    List <Cliente> lista = gCliente.readAllCliente();										    							
+										    int i=0;
+										    for(Cliente c: lista){
+										%>
 										<td class="center"><%=c.getNome() %></td>
 										<td class="center"><%=c.getCognome() %></td>
 										<td class="center"><%=c.getUsername() %></td>

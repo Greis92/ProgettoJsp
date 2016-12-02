@@ -29,7 +29,6 @@
                         <li><a class="ajax-link" href="${pageContext.request.contextPath}/Access/doLogout.jsp"><i class="glyphicon glyphicon-user"></i><span> Logout</span></a>
                         </li>
                     </ul>
-                   
                 </div>
             </div>
         </div>
